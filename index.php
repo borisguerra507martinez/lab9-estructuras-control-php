@@ -139,7 +139,37 @@ $estacion = match ($mes) {
 };
 
 // ---------- EJERCICIO 5 · Caja de la tienda (reto integrador) ----------
-// TODO 5
+const ITBMS = 0.07;
+
+// Paso 1: porcentaje de descuento según el monto
+if ($monto >= 150) {
+    $pct = 15;
+} elseif ($monto >= 100) {
+    $pct = 10;
+} elseif ($monto >= 50) {
+    $pct = 5;
+} else {
+    $pct = 0;
+}
+
+// Paso 2: 5 puntos extra si es miembro
+if ($esMiembro) {
+    $pct = $pct + 5;
+}
+
+// Paso 3: base con el descuento aplicado
+$base = $monto - ($monto * $pct / 100);
+
+// Paso 4: recargo nocturno del 3 %
+if ($hora >= 22 || $hora < 6) {
+    $base = $base + ($base * 0.03);
+    $recargo = "Sí";
+} else {
+    $recargo = "No";
+}
+
+// Paso 5: total con ITBMS
+$total = $base + ($base * ITBMS);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -199,10 +229,10 @@ $estacion = match ($mes) {
 
     <section id="ej5">
       <h2>Ejercicio 5 · Caja de la tienda</h2>
-      <p id="ej5-monto"><!-- TODO 5 --></p>
-      <p id="ej5-descuento"><!-- TODO 5 --></p>
-      <p id="ej5-recargo"><!-- TODO 5 --></p>
-      <p id="ej5-total"><!-- TODO 5 --></p>
+      <p id="ej5-monto">Monto de compra: B/. <?= number_format($monto, 2) ?></p>
+      <p id="ej5-descuento">Descuento aplicado: <?= $pct ?>%</p>
+      <p id="ej5-recargo">Recargo nocturno: <?= $recargo ?></p>
+      <p id="ej5-total">Total a pagar: B/. <?= number_format($total, 2) ?></p>
     </section>
 
   </main>
