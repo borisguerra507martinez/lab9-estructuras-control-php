@@ -27,7 +27,31 @@ $descuento = SEMILLA * 0.001;
 $vacio     = null;
 
 // ---------- EJERCICIO 1 · Boleto de cine (if / elseif / else) ----------
-// TODO 1
+const PRECIO_NINO     = 3.00;
+const PRECIO_JOVEN    = 4.50;
+const PRECIO_ADULTO   = 7.00;
+const PRECIO_JUBILADO = 3.50;
+
+if ($edad < 12) {
+    $categoria = "Niño";
+    $precio = PRECIO_NINO;
+} elseif ($edad <= 17) {
+    $categoria = "Joven";
+    $precio = PRECIO_JOVEN;
+} elseif ($edad <= 59) {
+    $categoria = "Adulto";
+    $precio = PRECIO_ADULTO;
+} else {
+    $categoria = "Jubilado";
+    $precio = PRECIO_JUBILADO;
+}
+
+if ($dia == 3) {
+    $precio = $precio * 0.5;
+    $miercoles = "Sí";
+} else {
+    $miercoles = "No";
+}
 
 // ---------- EJERCICIO 2 · Notas (elseif, ternario, &&) ----------
 // TODO 2
@@ -78,7 +102,7 @@ $vacio     = null;
 
     <section id="ej1">
       <h2>Ejercicio 1 · Boleto de cine</h2>
-      <p id="ej1-res"><!-- TODO 1 --></p>
+      <p id="ej1-res">Categoría: <?= $categoria ?> | Precio final: B/. <?= number_format($precio, 2) ?> | Miércoles 50%: <?= $miercoles ?></p>
     </section>
 
     <section id="ej2">
@@ -89,3 +113,24 @@ $vacio     = null;
 
     <section id="ej3">
       <h2>Ejercicio 3 · Día de la semana</h2>
+      <p id="ej3-res"><!-- TODO 3 --></p>
+    </section>
+
+    <section id="ej4">
+      <h2>Ejercicio 4 · Mes y estación</h2>
+      <p id="ej4-res"><!-- TODO 4 --></p>
+    </section>
+
+    <section id="ej5">
+      <h2>Ejercicio 5 · Caja de la tienda</h2>
+      <p id="ej5-monto"><!-- TODO 5 --></p>
+      <p id="ej5-descuento"><!-- TODO 5 --></p>
+      <p id="ej5-recargo"><!-- TODO 5 --></p>
+      <p id="ej5-total"><!-- TODO 5 --></p>
+    </section>
+
+  </main>
+
+  <footer id="firma">Lab 9 · <?= $nombreCompleto ?> · Semilla <?= SEMILLA ?></footer>
+</body>
+</html>
